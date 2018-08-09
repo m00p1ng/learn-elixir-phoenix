@@ -2,11 +2,14 @@ defmodule Discuss.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Poison.Encoder, only: [:email]}
+
   schema "users" do
     field(:email, :string)
     field(:provider, :string)
     field(:token, :string)
     has_many(:topics, Discuss.Topic)
+    has_many(:comments, Disccus.Comment)
 
     timestamps()
   end
